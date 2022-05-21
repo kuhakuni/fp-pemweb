@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId("id_customer")->constrained("customer");
             $table->foreignId("id_barang")->constrained("barang");
-            $table->timestamps();
             $table->integer("total_harga");
+            $table->timestamps();
         });
     }
 

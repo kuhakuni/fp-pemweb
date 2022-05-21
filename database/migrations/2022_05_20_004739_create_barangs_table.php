@@ -14,12 +14,12 @@ return new class extends Migration {
     {
         Schema::create("barang", function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string("nama_barang", 100);
             $table->integer("harga");
             $table->integer("stok");
             $table->foreignId("id_kategori")->constrained("kategori");
             $table->foreignId("id_supplier")->constrained("supplier");
+            $table->timestamps();
         });
     }
 

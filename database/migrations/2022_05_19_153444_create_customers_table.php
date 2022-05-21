@@ -14,10 +14,10 @@ return new class extends Migration {
     {
         Schema::create("customer", function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string("nama", 100);
             $table->string("alamat", 200);
             $table->string("no_telp", 15);
+            $table->timestamps();
         });
     }
 
