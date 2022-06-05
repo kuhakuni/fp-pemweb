@@ -9,14 +9,22 @@ class Supplier extends Model
 {
     use HasFactory;
     /**
-     * Primary Key
-     * @var String
+     * Table Name
      */
-    protected $primaryKey = "id_supplier";
+    protected $table = "supplier";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ["nama", "alamat", "no_telp"];
+    protected $fillable = ["nama_supplier", "alamat", "no_telp"];
+
+    /**
+     * Get the barang record associated with the supplier.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, "id_supplier");
+    }
 }

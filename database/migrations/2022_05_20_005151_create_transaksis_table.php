@@ -15,8 +15,7 @@ return new class extends Migration {
         Schema::create("transaksi", function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_customer")->constrained("customer");
-            $table->foreignId("id_barang")->constrained("barang");
-            $table->integer("total_harga");
+            $table->string("status_transaksi", 20);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists("transaksis");
+        Schema::dropIfExists("transaksi");
     }
 };

@@ -8,16 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-
     /**
-     * change default timestamp name
+     * Table Name
      */
-    const CREATED_AT = "waktu_transaksi";
-    /**
-     * Primary Key
-     * @var String
-     */
-    protected $primaryKey = "id_transaksi";
+    protected $table = "transaksi";
 
     /**
      * The attributes that are mass assignable.
@@ -31,4 +25,22 @@ class Transaksi extends Model
         "total_harga",
         "tanggal",
     ];
+
+    /**
+     * Get the customer record associated with the transaksi.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, "id_customer");
+    }
+
+    /**
+     * Get the detail transaksi record associated with the transaksi.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function detailTransaksi()
+    {
+        return $this->hasMany(DetailTransaksi::class, "id_transaksi");
+    }
 }

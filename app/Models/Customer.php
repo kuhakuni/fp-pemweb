@@ -10,10 +10,9 @@ class Customer extends Model
     use HasFactory;
 
     /**
-     * Primary Key
-     * @var String
+     * Table Name
      */
-    protected $primaryKey = "id_customer";
+    protected $table = "customer";
 
     /**
      * The attributes that are mass assignable.
@@ -21,4 +20,13 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = ["nama", "alamat", "no_telp"];
+
+    /**
+     * Get the transaksi record associated with the customer.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, "id_customer");
+    }
 }

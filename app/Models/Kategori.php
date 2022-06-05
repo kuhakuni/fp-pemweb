@@ -9,14 +9,22 @@ class Kategori extends Model
 {
     use HasFactory;
     /**
-     * Primary Key
-     * @var String
+     * Table Name
      */
-    protected $primaryKey = "id_kategori";
+    protected $table = "kategori";
 
     /**
      * The attributes that are mass assignable.
      * @var array
      */
     protected $fillable = ["kategori"];
+
+    /**
+     * Get the barang record associated with the kategori.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, "id_kategori");
+    }
 }

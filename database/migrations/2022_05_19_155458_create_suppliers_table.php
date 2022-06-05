@@ -14,10 +14,10 @@ return new class extends Migration {
     {
         Schema::create("supplier", function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string("alamat", 200);
-            $table->string("no_telp", 15);
             $table->string("nama_supplier", 100);
+            $table->string("alamat", 200);
+            $table->string("no_telp", 25);
+            $table->timestamps();
         });
     }
 
