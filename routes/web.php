@@ -18,8 +18,29 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-Route::get("/", [IndexController::class, "index"]);
-Route::get("/administrator", [AdministratorController::class, "index"]);
-Route::resource("barang", BarangController::class);
-Route::resource("supplier", SupplierController::class);
-Route::resource("kategori", KategoriController::class);
+Route::get("/", [IndexController::class, "index"])->middleware("auth");
+Route::get("/administrator", [
+    AdministratorController::class,
+    "index",
+])->middleware("auth");
+Route::resource("barang", BarangController::class)->middleware("auth");
+Route::resource("supplier", SupplierController::class)->middleware("auth");
+Route::resource("kategori", KategoriController::class)->middleware("auth");
+Route::get("/login", function () {
+    return view("administrator.login");
+})
+    ->name("login")
+    ->middleware("guest");
+Route::get("/register", function () {
+    return view("administrator.register");
+})->middleware("guest");
+Route::post("/login", [
+    AdministratorController::class,
+    "authenticate",
+])->middleware("guest");
+Route::post("/register", [AdministratorController::class, "store"])->middleware(
+    "guest"
+);
+Route::get("/logout", AdministratorController::class . "@logout")->middleware(
+    "auth"
+);

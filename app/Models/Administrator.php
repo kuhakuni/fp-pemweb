@@ -14,15 +14,5 @@ class Administrator extends Model
      */
     protected $table = "administrator";
 
-    /**
-     * Primary Key
-     * @var String
-     */
-    protected $primaryKey = "id_administrator";
-
-    /**
-     * The attributes that are mass assignable.
-     * @var array
-     */
-    protected $fillable = ["nama", "username", "password"];
+    protected $guarded = ["id"];
 }
