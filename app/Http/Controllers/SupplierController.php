@@ -14,6 +14,7 @@ class SupplierController extends Controller
         return view("supplier.supplier", [
             "route" => $route,
             "dataSupplier" => $dataSupplier,
+            "title" => "Data Supplier - NiceAdmin",
         ]);
     }
     public function store()
@@ -42,6 +43,7 @@ class SupplierController extends Controller
         return view("supplier.edit", [
             "route" => "edit",
             "dataSupplier" => $dataSupplier,
+            "title" => "Ubah Data Supplier - NiceAdmin",
         ]);
     }
 }

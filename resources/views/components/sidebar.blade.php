@@ -52,7 +52,7 @@
       <li class="nav-heading">Administrator</li>
 
       <li class="nav-item">
-        <a class="nav-link {{ $route === 'administrator' ? '' : 'collapsed' }}" href="/administrator">
+        <a class="nav-link {{ $route === 'administrator' ? '' : 'collapsed' }}" href="/administrator/{{ auth()->user()->id }}">
           <i class="bi bi-person"></i>
           <span>Profil</span>
         </a>

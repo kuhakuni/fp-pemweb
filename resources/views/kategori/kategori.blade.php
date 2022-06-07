@@ -43,6 +43,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nama Kategori</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

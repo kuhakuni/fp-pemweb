@@ -5,6 +5,7 @@ use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\KategoriController;
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\KategoriController;
 */
 
 Route::get("/", [IndexController::class, "index"])->middleware("auth");
-Route::get("/administrator", [
+Route::get("/administrator/{id}", [
     AdministratorController::class,
     "index",
 ])->middleware("auth");
@@ -42,5 +43,12 @@ Route::post("/register", [AdministratorController::class, "store"])->middleware(
     "guest"
 );
 Route::get("/logout", AdministratorController::class . "@logout")->middleware(
+    "auth"
+);
+Route::put("administrator/{id}", [
+    AdministratorController::class,
+    "update",
+])->middleware("auth");
+Route::get("/transaksi", [TransaksiController::class, "index"])->middleware(
     "auth"
 );

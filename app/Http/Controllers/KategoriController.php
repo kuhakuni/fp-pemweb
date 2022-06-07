@@ -15,6 +15,7 @@ class KategoriController extends Controller
         return view("kategori.kategori", [
             "route" => $route,
             "dataKategori" => $dataKategori,
+            "title" => "Data Kategori - NiceAdmin",
         ]);
     }
     public function store()
@@ -43,6 +44,7 @@ class KategoriController extends Controller
         return view("kategori.edit", [
             "route" => "edit",
             "dataKategori" => $dataKategori,
+            "title" => "Ubah Data Kategori - NiceAdmin",
         ]);
     }
 }

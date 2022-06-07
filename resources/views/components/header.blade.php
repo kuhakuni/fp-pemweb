@@ -30,7 +30,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ url('/administrator') }}">
+              <a class="dropdown-item d-flex align-items-center" href="/administrator/{{ auth()->user()->id }}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

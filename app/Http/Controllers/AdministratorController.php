@@ -14,16 +14,21 @@ class AdministratorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $route = "administrator";
-        return view("administrator.administrator", ["route" => $route]);
+        $dataAdministrator = Administrator::find($id);
+        return view("administrator.administrator", [
+            "route" => $route,
+            "dataAdministrator" => $dataAdministrator,
+            "title" => "Administrator - NiceAdmin",
+        ]);
     }
     public function store()
     {
         $validatedData = request()->validate([
             "nama" => "required",
-            "username" => "required",
+            "username" => "required | unique:administrator,username",
             "password" => "required | min:8",
         ]);
         //hash password
@@ -36,7 +41,7 @@ class AdministratorController extends Controller
     {
         $remember = request()->has("remember") ? true : false;
         $validatedData = request()->validate([
-            "username" => "required",
+            "username" => "required | unique:administrator,username",
             "password" => "required| min:8",
         ]);
         if (Auth::attempt($validatedData, $remember)) {
@@ -60,5 +65,16 @@ class AdministratorController extends Controller
             ->session()
             ->regenerateToken();
         return redirect("/login");
+    }
+    public function update($id)
+    {
+        $validatedData = request()->validate([
+            "nama" => "required",
+            "username" => "required | unique:administrator,username",
+        ]);
+        //hash password
+        Administrator::where("id", $id)->update($validatedData);
+        Session::flash("success", "Akun berhasil diubah!");
+        return redirect("/administrator/" . $id);
     }
 }

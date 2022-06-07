@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>{{ isset($title) ? $title : "Dashboard - NiceAdmin" }}</title>
 
   <!-- Favicons -->
   <link href="{{ asset('img/favicon.png') }}" rel="icon">
